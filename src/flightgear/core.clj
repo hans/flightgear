@@ -34,7 +34,7 @@
         type ((node :attrs) :type)
         content (first (node :content))]
     (cond
-      (#{"double" "bool"} type) [tag (read-string content)]
+      (#{"double" "bool" "int"} type) [tag (read-string content)]
       :default [tag content])))
 
 (defn property-list-to-map [property-list]
