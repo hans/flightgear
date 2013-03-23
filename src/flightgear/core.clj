@@ -14,7 +14,7 @@
     (.print (str msg "\r\n"))
     (.flush))
   nil)
-  
+
 (defn connect [host port]
   (println "Connecting to" host "on" port)
   (let [s (Socket. host port)]
@@ -58,6 +58,13 @@
 
 (defn velocities []
   (request-property-list "/velocities"))
+
+(defn flight-controls []
+  (request-property-list "/controls/flight"))
+
+(defn engine-controls
+  ([] (engine-controls 1))
+  ([n] (request-property-list (str "/controls/engines/engine[" n "]"))))
 
 (defn starter! [value]
   (set-property "/controls/switches/starter" (if value "true" "false")))

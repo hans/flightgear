@@ -1,7 +1,7 @@
 (ns flightgear.api
   (:require [flightgear.core :as core]))
 
-(defn connect "connect to the running flight gear using the telnet api" 
+(defn connect "connect to the running flight gear using the telnet api"
   [host port]
   (core/connect host port))
 
@@ -9,23 +9,31 @@
   []
   (core/position))
 
-(defn orientation "current orientation data as a map" 
+(defn orientation "current orientation data as a map"
   []
   (core/orientation))
 
-(defn velocities "current velocity data as a map" 
+(defn velocities "current velocity data as a map"
   []
   (core/velocities))
 
-(defn starter! "true/false to turn the starter key" 
+(defn flight-controls "current flight control data as a map"
+  []
+  (core/flight-controls))
+
+(defn engine-controls "current engine control data as a map"
+  []
+  (core/engine-controls))
+
+(defn starter! "true/false to turn the starter key"
   [value]
   (core/starter! value))
 
-(defn aileron! "-1 to 1 to set aileron" 
+(defn aileron! "-1 to 1 to set aileron"
   [value]
   (core/aileron! value))
 
-(defn elevator! "-1 to 1 to set elevator" 
+(defn elevator! "-1 to 1 to set elevator"
   [value]
   (core/elevator! value))
 
@@ -33,7 +41,7 @@
   [value]
   (core/rudder! value))
 
-(defn flaps! "0 to 1 to set flaps" 
+(defn flaps! "0 to 1 to set flaps"
   [value]
   (core/flaps! value))
 
