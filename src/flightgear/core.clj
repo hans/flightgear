@@ -41,7 +41,7 @@
   (let [list-bytes (ByteArrayInputStream. (.getBytes property-list))
         tree (zip/xml-zip (xml/parse list-bytes))
         properties (zip/children tree)]
-    (reduce conj {} (map property-node-to-entry properties))))
+    (into {} (map property-node-to-entry properties))))
 
 (defn request-property-list [property]
   (send-message (str "dump " property))
